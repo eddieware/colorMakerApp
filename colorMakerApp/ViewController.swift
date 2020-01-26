@@ -9,9 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var red : Bool = false
-    var green : Bool = false
-    var blue : Bool = false
+    
     //SWITCHES
     @IBOutlet weak var redSwitch: UISwitch!
     @IBOutlet weak var greenSwitch: UISwitch!
@@ -20,50 +18,68 @@ class ViewController: UIViewController {
     //UIVIEW
     @IBOutlet weak var backGround: UIView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        
     }
 
-    @IBAction func redSwitch(_ sender: UISwitch) {
-        
-        print(redSwitch.isOn)
-        if redSwitch.isOn
-        {
-          backGround.backgroundColor = UIColor.red
-        }else
-        {
-            backGround.backgroundColor = UIColor.gray
-        }
+    @IBAction func redSwitch(_ sender: UISwitch)
+    {
+        changeColor()
     }
     
     @IBAction func greenSwitch(_ sender: UISwitch)
     {
-        print(greenSwitch.isOn)
-        if greenSwitch.isOn
+        changeColor()
+    }
+    
+    @IBAction func blueSwitch(_ sender: UISwitch)
+    {
+        changeColor()
+    }
+//    USING THE  FUNCTION CHANGE COLOR TO DO ELSE IF WITH ALL COMBINATIONS
+    func changeColor(){
+        // 0-0-0
+        if (redSwitch.isOn == false && greenSwitch.isOn == false && blueSwitch.isOn == false )
         {
-           backGround.backgroundColor = UIColor.green
+         backGround.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 1)
         }
-        else
+        // 1-0-0
+        else if(redSwitch.isOn == true && greenSwitch.isOn == false && blueSwitch.isOn == false )
         {
-          backGround.backgroundColor = UIColor.gray
+            backGround.backgroundColor = UIColor(displayP3Red: 255, green: 0, blue: 0, alpha: 1)
+        }
+            // 0-1-0
+        else if(redSwitch.isOn == false && greenSwitch.isOn == true && blueSwitch.isOn == false )
+        {
+            backGround.backgroundColor = UIColor(displayP3Red: 0, green: 255, blue: 0, alpha: 1)
+        }
+        // 1-1-0
+        else if(redSwitch.isOn == true && greenSwitch.isOn == true && blueSwitch.isOn == false )
+        {
+            backGround.backgroundColor = UIColor(displayP3Red: 255, green: 255, blue: 0, alpha: 1)
+        }
+        //0-0-1
+        else if(redSwitch.isOn == false && greenSwitch.isOn == false && blueSwitch.isOn == true )
+        {
+            backGround.backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 255, alpha: 1)
+        }
+            //1-0-1
+        else if(redSwitch.isOn == true && greenSwitch.isOn == false && blueSwitch.isOn == true )
+        {
+            backGround.backgroundColor = UIColor(displayP3Red: 255, green: 0, blue: 255, alpha: 1)
+        }
+        //0-1-1
+        else if(redSwitch.isOn == false && greenSwitch.isOn == true && blueSwitch.isOn == true )
+        {
+            backGround.backgroundColor = UIColor(displayP3Red: 0, green: 255, blue: 255, alpha: 1)
+        }
+        //1-1-1
+        else if(redSwitch.isOn == true && greenSwitch.isOn == true && blueSwitch.isOn == true )
+        {
+            backGround.backgroundColor = UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 1)
         }
         
-     }
-    
-    @IBAction func blueSwitch(_ sender: UISwitch) {
-        print(blueSwitch.isOn)
-        if blueSwitch.isOn
-        {
-           backGround.backgroundColor = UIColor.blue
-        }
-        else
-        {
-          backGround.backgroundColor = UIColor.gray
-        }
         
     }
     
